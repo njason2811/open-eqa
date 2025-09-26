@@ -27,8 +27,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--model",
         type=str,
-        default="gemini-pro",
-        help="Google model (default: gemini-pro)",
+        default="gemini-2.5-flash",
+        help="Google model (default: gemini-2.5-flash)",
     )
     parser.add_argument(
         "--output-directory",
@@ -62,7 +62,7 @@ def parse_gemini_output(input: str, output: str) -> str:
 def ask_question(
     question: str,
     google_key: Optional[str] = None,
-    google_model: str = "gemini-pro",
+    google_model: str = "gemini-2.5-flash",
 ) -> Optional[str]:
     try:
         prompt = load_prompt("blind-llm")
