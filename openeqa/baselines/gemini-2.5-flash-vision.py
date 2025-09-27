@@ -104,7 +104,7 @@ def ask_question(
         ]
         frames = [Image.fromarray(img) for img in frames]
 
-        prompt = load_prompt("gemini-2.5-flash")
+        prompt = load_prompt("gemini-2.5-flash-vision")
         prefix, suffix = prompt.split("User Query:")
         suffix = "User Query:" + suffix.format(question=question)
 
