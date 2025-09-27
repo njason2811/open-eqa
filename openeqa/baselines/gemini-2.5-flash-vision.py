@@ -30,8 +30,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--model",
         type=str,
-        default="gemini-pro-vision",
-        help="Google model (default: gemini-pro-vision)",
+        default="gemini-2.5-flash",
+        help="Google model (default: gemini-2.5-flash)",
     )
     parser.add_argument(
         "--frames-directory",
@@ -104,7 +104,7 @@ def ask_question(
         ]
         frames = [Image.fromarray(img) for img in frames]
 
-        prompt = load_prompt("gemini-pro-vision")
+        prompt = load_prompt("gemini-2.5-flash")
         prefix, suffix = prompt.split("User Query:")
         suffix = "User Query:" + suffix.format(question=question)
 
