@@ -152,7 +152,8 @@ def main(args: argparse.Namespace):
         # extract scene paths
         folder = args.frames_directory / item["episode_history"]
         frames = sorted(folder.glob("*-rgb.png"))
-        indices = np.round(np.linspace(0, len(frames) - 1, args.num_frames)).astype(int)
+        num = min(args.num_frames, len(frames))
+        indices = np.round(np.linspace(0, len(frames) - 1, num)).astype(int)
         paths = [str(frames[i]) for i in indices]
 
         # generate answer
