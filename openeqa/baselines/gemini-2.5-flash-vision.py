@@ -31,7 +31,7 @@ def parse_args() -> argparse.Namespace:
         "--model",
         type=str,
         default="gemini-2.5-flash",
-        help="Google model (default: gemini-2.5-flash)",
+        help="Google model (default: gemini-pro-vision)",
     )
     parser.add_argument(
         "--frames-directory",
@@ -104,7 +104,7 @@ def ask_question(
         ]
         frames = [Image.fromarray(img) for img in frames]
 
-        prompt = load_prompt("gemini-2.5-flash-vision")
+        prompt = load_prompt("gemini-pro-vision")
         prefix, suffix = prompt.split("User Query:")
         suffix = "User Query:" + suffix.format(question=question)
 
@@ -152,8 +152,7 @@ def main(args: argparse.Namespace):
         # extract scene paths
         folder = args.frames_directory / item["episode_history"]
         frames = sorted(folder.glob("*-rgb.png"))
-        num = min(args.num_frames, len(frames))
-        indices = np.round(np.linspace(0, len(frames) - 1, num)).astype(int)
+        indices = np.round(np.linspace(0, len(frames) - 1, args.num_frames)).astype(int)
         paths = [str(frames[i]) for i in indices]
 
         # generate answer
