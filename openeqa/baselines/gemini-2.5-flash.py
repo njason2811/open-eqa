@@ -44,7 +44,7 @@ def parse_args() -> argparse.Namespace:
     args = parser.parse_args()
     args.output_directory.mkdir(parents=True, exist_ok=True)
     args.output_path = args.output_directory / (
-        args.dataset.stem + "-{}.json".format(args.model)
+        args.dataset.stem + "-{}-blind.json".format(args.model)
     )
     return args
 
