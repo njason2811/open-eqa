@@ -109,7 +109,7 @@ def ask_question(
     try:
         set_openai_key(key=openai_key)
 
-        prompt = load_prompt("gpt4o")
+        prompt = load_prompt("gpt4v")
         prefix, suffix = prompt.split("User Query:")
         suffix = "User Query:" + suffix.format(question=question)
 
